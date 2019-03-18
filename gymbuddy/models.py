@@ -19,10 +19,10 @@ class Gym(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    AboutMe = models.TextField(max_length=300)
-    Following = models.CharField(max_length = 20)
+    AboutMe = models.TextField(max_length=300, blank=True)
+    Following = models.CharField(max_length = 20, blank=True)
     ProfilePicture = models.ImageField(upload_to='profile_images', blank=True)
-    GymID = models.ForeignKey(Gym)
+    GymID = models.ForeignKey(Gym, blank=True)
     Height = models.DecimalField(max_length=3, decimal_places=2, max_digits=5)
     Weight = models.IntegerField()
     DoB = models.DateField()
@@ -38,7 +38,7 @@ class Profile(models.Model):
 class ProgressPics(models.Model):
     PhotoID = models.AutoField(primary_key=True)
     UserName = models.ForeignKey(User)
-    Photo = models.ImageField(upload_to='progress_pics', blank=True)
+    Photo = models.ImageField(upload_to='progress_pics')
     Likes = models.IntegerField(default=0)
     
     class Meta:
@@ -48,7 +48,7 @@ class Comments(models.Model):
     CommentID = models.AutoField(primary_key=True)
     Poster = models.ForeignKey(Profile)
     OnPic = models.ForeignKey(ProgressPics)
-    Date = models.DateField(max_length=128)
+    Date = models.DateTimeField(auto_now_add=True)
     Comment = models.CharField(max_length=200)
 
     class Meta:
