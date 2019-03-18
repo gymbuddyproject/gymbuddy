@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      var marker;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.871729, lng: -4.288315},
+          zoom: 15
+        });
+
+        var contentString = '<div id="content">'+
+            '<p><b>Claire Rodgers: Yoga</b></p>' +
+            '<p><b>Address:</b> 4 Byres Rd, Glasgow G12 8QZ</b></p>' +
+            '<p><b>Website:</b> clairerodgersyoga.com</b></p>'
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        marker = new google.maps.Marker({
+          position: {lat: 55.874101, lng: -4.294866},
+          animation: google.maps.Animation.DROP,
+          map: map,
+          title: 'Claire Rodgers: Yoga'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_XqtZXs7QjWLeSBO3urXsUAgRg8Ge8Z4&callback=initMap"
+    async defer></script>
+  </body>
+</html>
+
+map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 55.871729, lng: -4.288315},
+  zoom: 15
+});
+marker = new google.maps.Marker({
+    position: {lat: 55.868626, lng: -4.270873},
+    animation: google.maps.Animation.DROP,
+    map: map,
+    title: 'Pure Gym: Charing Cross'
+});
+marker = new google.maps.Marker({
+    position: {lat: 55.874101, lng: -4.294866},
+    animation: google.maps.Animation.DROP,
+    map: map,
+    title: 'Claire Rodgers: Yoga'
+});
+}

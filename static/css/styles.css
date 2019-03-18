@@ -1,0 +1,60 @@
+#map {
+    height:100%;
+}
+
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+.navigationBar {
+    background-color: #333;
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+.navigationBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+.navigationBar li {
+    float: right;
+}
+
+.navigationBar a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigationBar a:hover {
+    background-color: #111;
+}
+
+footer {
+    height: 10%;
+    background-color: #777;
+    text-align: center;
+    color: white;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+footer a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: white;
+}

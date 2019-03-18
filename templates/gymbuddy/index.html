@@ -1,0 +1,29 @@
+{% extends 'gymbuddy/base.html' %}
+{% block body_block %}
+<div id="map"></div>
+    <script>
+      var map;
+      var marker;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.871729, lng: -4.288315},
+          zoom: 15
+        });
+
+        marker = new google.maps.Marker({
+            position: {lat: 55.868626, lng: -4.270873},
+            animation: google.maps.Animation.DROP,
+            map: map,
+            title: 'Pure Gym: Charing Cross'
+        });
+        marker = new google.maps.Marker({
+            position: {lat: 55.874101, lng: -4.294866},
+            animation: google.maps.Animation.DROP,
+            map: map,
+            title: 'Claire Rodgers: Yoga'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_XqtZXs7QjWLeSBO3urXsUAgRg8Ge8Z4&callback=initMap"
+    async defer></script>
+{% endblock %}
