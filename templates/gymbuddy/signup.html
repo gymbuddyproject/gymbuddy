@@ -1,0 +1,35 @@
+{% extends 'gymbuddy/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Sign Up
+{% endblock %}
+
+{% block body_block %}
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	{% if registered %}
+		<strong>Thank you for signing up to GymBuddy!</strong>
+		<a href="{% url 'index' %}">Return to the homepage.</a><br />
+	{% else %}
+	
+		<div class="boxed">
+			
+			<strong>Create Your Account</strong><br />
+			<form id="user_form" method="post" action="{% url 'signup' %}"
+			enctype="multipart/form-data">
+
+			{% csrf_token %}
+
+	
+			{{ user_form.as_p }}
+			{{ profile_form.as_p }}
+
+
+			<input type="submit" name="submit" value="Register" />
+		</div>
+		
+		
+		
+	</form>
+	{% endif %}
+{% endblock %}
