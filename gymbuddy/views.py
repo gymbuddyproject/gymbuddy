@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from gymbuddy.models import Gym
 
 def index(request):
-    return render(request, 'gymbuddy/index.html')
+    gym_list = Gym.objects.all()
+    context_dict = {"Gyms": gym_list}
+    return render(request, 'gymbuddy/index.html', context=context_dict)
 
 def about(request):
     return render(request, 'gymbuddy/about.html')
