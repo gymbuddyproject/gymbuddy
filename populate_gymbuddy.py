@@ -303,12 +303,17 @@ def populate():
          gym_added = add_gym(gym["GymName"], gym["Address"], gym["X_Coord"], gym["Y_Coord"], gym["Rating"], gym["OpeningHours"])
 
     for profile in profiles:
-         profile_added = add_profile(profile["username"], profile["email"], profile["password"], profile["AboutMe"], profile.get("Following", []),
+         following = []
+         follow_grab = profile.get("Following", [])
+         for followee in follow_grab:
+              following.append(followee["username"])
+         print(following)
+         profile_added = add_profile(profile["username"], profile["email"], profile["password"], profile["AboutMe"], following,
                                   profile["ProfilePicture"], profile["GymID"], profile["Height"],
                                   profile["Weight"], profile["Dob"], profile["Experience"])
 
     for pic in progress_pics:
-         pic_added = add_pic(pic["UserName"], pic["Photo"], pic["Likes"])
+         pic_added = add_pic(pic["UserName"]["username"], pic["Photo"], pic["Likes"])
 
     for comment in comments:
          comment_added = add_comment(comment["CommentID"], comment["Poster"], comment["OnPic"], comment["Date"], comment["Comment"])
@@ -326,6 +331,7 @@ def add_user(username, email, password):
 
 def add_profile(username, email, password, AboutMe, Following, ProfilePicture, GymID, Height, Weight, Dob, Experience ):
     user = add_user(username, email, password)
+
     profile= Profile.objects.get_or_create(user=user,
                                            AboutMe=AboutMe, Following=Following, ProfilePicture=ProfilePicture, GymID=Gym.objects.get(id=GymID),
                                              Height=Height, Weight=Weight, DoB='1999-12-12', Experience=Experience)[0]
@@ -333,6 +339,7 @@ def add_profile(username, email, password, AboutMe, Following, ProfilePicture, G
     return profile
 
 def add_pic(UserName, Photo, Likes):
+
     pic=ProgressPics.objects.get_or_create(UserName=UserName, Photo=Photo, Likes=Likes)[0]
     pic.save()
     return pic
