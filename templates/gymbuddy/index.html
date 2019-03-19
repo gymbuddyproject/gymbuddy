@@ -1,9 +1,16 @@
 {% extends 'gymbuddy/base.html' %}
+{% load static %}
 {% block body_block %}
-<div class="boxed">
-    <p>some info here</p>
+<div id="top">
+	<div class="bg-image"></div>
+	<div class="bg-text">
+	  <h1>Find your gym below!</h1>
+	  <p>To get started, click the arrow and select your gym from the map</p>
+	
+	<a href="#map"><img class="resize" src= "{% static "images/down-arrow.png" %} "></a>
 </div>
 
+</div>
 <div id="map"></div>
     <script>
       var map;
