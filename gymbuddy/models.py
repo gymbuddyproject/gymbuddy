@@ -10,7 +10,7 @@ class Gym(models.Model):
     Y_Coord = models.DecimalField(max_length=10, decimal_places=6, max_digits=9)
     Rating = models.DecimalField(max_length=3, decimal_places=2, max_digits=4)
     OpeningHours = models.CharField(max_length=50)
-    slug = models.SlugField(default='', unique=True)
+    slug = models.SlugField(blank=True, unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.GymName)
