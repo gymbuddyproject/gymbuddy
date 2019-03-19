@@ -23,7 +23,7 @@ class Profile(models.Model):
     AboutMe = models.TextField(max_length=300, blank=True)
     ProfilePicture = models.ImageField(upload_to='profile_images', blank=True)
     GymID = models.ForeignKey(Gym, blank=True)
-    Following = models.CharField(max_length=300, blank=True, on_delete=models.CASCADE)
+    Following = models.CharField(max_length=300, blank=True)
     Height = models.DecimalField(max_length=3, decimal_places=2, max_digits=5)
     Weight = models.IntegerField()
     DoB = models.DateField()
