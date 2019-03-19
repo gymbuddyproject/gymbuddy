@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 class Gym(models.Model):
     GymName = models.CharField(max_length=30)
     Address = models.CharField(max_length=30)
@@ -15,19 +16,20 @@ class Gym(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.GymName)
         super(Gym, self).save(*args, **kwargs)
-        
+
     class Meta:
-      verbose_name_plural = "Gyms"
-      
+        verbose_name_plural = "Gyms"
+
     def __str__(self):
-        return self.GymName        
-    
+        return self.GymName
+
+
 def profile_directory_path(instance, PhotoID):
     return '{0}/{1}'.format(instance.user.username, PhotoID)
-        
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     AboutMe = models.TextField(max_length=300, blank=True)
     ProfilePicture = models.ImageField(upload_to=profile_directory_path, blank=True)
     GymID = models.ForeignKey(Gym, blank=True)
@@ -40,22 +42,25 @@ class Profile(models.Model):
     Experience = models.CharField(max_length=12, choices=experience_choices, default='Beginner')
 
     class Meta:
-      verbose_name_plural = "Profiles"
+        verbose_name_plural = "Profiles"
 
     def __str__(self):
-      return self.user.username
+        return self.user.username
+
 
 def progress_directory_path(instance, PhotoID):
     return '{0}/progress_pics/{1}'.format(instance.UserName.user.username, PhotoID)
+
 
 class ProgressPics(models.Model):
     PhotoID = models.AutoField(primary_key=True)
     UserName = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Photo = models.ImageField(upload_to=progress_directory_path)
     Likes = models.IntegerField(default=0)
-    
+
     class Meta:
-      verbose_name_plural = "ProgressPics"
+        verbose_name_plural = "ProgressPics"
+
 
 class Comments(models.Model):
     CommentID = models.AutoField(primary_key=True)
@@ -65,4 +70,4 @@ class Comments(models.Model):
     Comment = models.CharField(max_length=200)
 
     class Meta:
-      verbose_name_plural = "Comments"
+        verbose_name_plural = "Comments"
