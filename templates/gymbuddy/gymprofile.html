@@ -1,4 +1,11 @@
 {% extends 'gymbuddy/base.html' %}
 {% block body_block %}
-<p>This is a gym</p>
+    {% if gym %}
+        {% for gym in gym %}
+            <p>Gym.GymName</p>
+        {% endfor %}
+    {% else %}
+        <p>No Gym exists</p>
+    {% endif %}
 {% endblock %}
+

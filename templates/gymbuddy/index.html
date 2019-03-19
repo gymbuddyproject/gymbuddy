@@ -27,41 +27,28 @@
             map.setCenter(initialLocation);
         });
 
-        var contentString = 'Put gym info here'
-
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
- }
-         marker = new google.maps.Marker({
-            position: {lat: 55.868626, lng: -4.270873},
-            animation: google.maps.Animation.DROP,
-            map: map,
-            title: 'Pure Gym: Charing Cross'
-        });
-
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-
+    }
         {% if Gyms %}
             {% for Gym in Gyms %}
-                var contentString = Gym.GymName
+                var contentString = '<b>{{ Gym.GymName }}</b>' +
+                                    '<p>Rating: {{ Gym.Rating }}</p>' +
+                                    '<a href="{% url 'index' %}">Find out more</a>'
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
 
+                var coords = {lat: {{ Gym.X_Coord }}, lng: {{ Gym.Y_Coord }}}
                 marker = new google.maps.Marker({
-                    position: {lat: Gym.X_Coord, lng: Gym.Y_Coord},
+                    position: coords,
                     animation: google.maps.Animation.DROP,
                     map: map,
-                    title: Gym.GymName
-                 });
+                    title: '{{ Gym.GymName }}'
+                });
 
-                 marker.addListener('click', function() {
+                marker.addListener('click', function() {
                     infowindow.open(map, marker);
-                 });
+                });
             {% endfor %}
         {% endif%}
       }
