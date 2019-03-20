@@ -14,6 +14,7 @@ class Gym(models.Model):
     slug = models.SlugField(blank=True, unique=True)
     WebsiteURL = models.CharField(max_length=50, blank=True)
 
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.GymName)
         super(Gym, self).save(*args, **kwargs)
@@ -33,10 +34,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     AboutMe = models.TextField(max_length=300, blank=True)
     ProfilePicture = models.ImageField(upload_to=profile_directory_path, blank=True)
-    GymID = models.ForeignKey(Gym, blank=True)
+    GymID = models.ForeignKey(Gym, blank=True, null=True)
     Following = models.CharField(max_length=300, blank=True)
-    Height = models.DecimalField(max_length=3, decimal_places=2, max_digits=5)
-    Weight = models.IntegerField()
+    Height = models.DecimalField(max_length=3, decimal_places=2, max_digits=5, null=True)
+    Weight = models.IntegerField(null=True)
     DoB = models.DateField()
 
     experience_choices = (('Beginner', 'Beginner'), ('Intermediate', 'Intermediate'), ('Advanced', 'Advanced'))

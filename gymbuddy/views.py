@@ -14,8 +14,35 @@ def login(request):
     return render(request, 'gymbuddy/login.html')
 
 def signup(request):
-    return render(request, 'gymbuddy/signup.html')
+    registered = False
 
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = ProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'ProfilePicture' in request.FILES:
+                profile.picture = request.FILES['ProfilePicture']
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = ProfileForm()
+
+    return render(request,
+                  'gymbuddy/signup.html',
+                  {'user_form': user_form,
+                   'profile_form': profile_form,
+                   'registered': registered})
 def contactus(request):
     return render(request, 'gymbuddy/contactus.html')
 
