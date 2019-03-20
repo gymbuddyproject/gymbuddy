@@ -1,7 +1,11 @@
 {% extends 'gymbuddy/base.html' %}
 {% block body_block %}
     {% if Gym %}
-        <p>{{   Gym.GymName }}</p>
+        <p>Name: {{ Gym.GymName }}</p>
+        <p>Rating: {{ Gym.Rating }}</p>
+        <p>OpeningHours: {{ Gym.OpeningHours }}</p>
+        <p>Adress: {{ Gym.Address }}</p>
+        <a href="{{ Gym.WebsiteURL}}">Sign up now</a>
     {% else %}
         <p>No Gym exists</p>
     {% endif %}
