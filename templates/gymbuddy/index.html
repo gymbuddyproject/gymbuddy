@@ -28,15 +28,12 @@
         });
 
     }
+
         {% if Gyms %}
             {% for Gym in Gyms %}
                 var contentString = '<b>{{ Gym.GymName }}</b>' +
                                     '<p>Rating: {{ Gym.Rating }}</p>' +
                                     '<a href="{% url 'gym_profile' Gym.slug %}">Find out more</a>'
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
 
                 var coords = {lat: {{ Gym.X_Coord }}, lng: {{ Gym.Y_Coord }}}
                 marker = new google.maps.Marker({
@@ -45,12 +42,18 @@
                     map: map,
                     title: '{{ Gym.GymName }}'
                 });
-
-                marker.addListener('click', function() {
-                    infowindow.open(map, marker);
-                });
+                attachInfoWindow(marker, contentString);
             {% endfor %}
         {% endif%}
+        function attachInfoWindow(marker, info) {
+        	var infowindow = new google.maps.InfoWindow({
+          		content: info
+        	});
+
+        	marker.addListener('click', function() {
+          		infowindow.open(marker.get('map'), marker);
+        	});
+      	}
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_XqtZXs7QjWLeSBO3urXsUAgRg8Ge8Z4&callback=initMap"
