@@ -1,4 +1,13 @@
 {% extends 'gymbuddy/base.html' %}
 {% block body_block %}
-<p>this is a user profile.</p>
+{% if Person %}
+    <div class="gym-profile">
+    <p>Weight: {{ Person.Weight }} kg</p>
+    </div>
+{% else %}
+    <div class="gym-profile">
+    <p>User does not exist</p>
+    </div>
+{% endif %}
 {% endblock %}
+

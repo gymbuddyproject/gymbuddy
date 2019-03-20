@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from gymbuddy.models import Gym
 from gymbuddy.forms import UserForm, ProfileForm
+from gymbuddy.models import Profile
+from gymbuddy.models import User
 
 
 def index(request):
@@ -53,13 +55,22 @@ def gymprofile(request, gym_slug):
     try:
         gym = Gym.objects.get(slug=gym_slug)
         context_dict["Gym"] = gym
+        gym_id = gym.id
+        people = Profile.objects.filter(GymID=gym_id)
+        context_dict["People"] = people
     except Gym.DoesNotExist:
         context_dict["Gym"] = None
 
     return render(request, 'gymbuddy/gymprofile.html', context=context_dict)
 
-def userprofile(request):
-    return render(request, 'gymbuddy/userprofile.html')
+def userprofile(request, user_name):
+    context_dict = {}
+    try:
+        people = Profile.objects.get(user=(User.objects.get(username=user_name)))
+        context_dict["Person"] = people
+    except User.DoesNotExist:
+        context_dict["Person"] = None
+    return render(request, 'gymbuddy/userprofile.html', context=context_dict)
 
 def test(request):
     return render(request, 'gymbuddy/tester.html')
