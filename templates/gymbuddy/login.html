@@ -7,31 +7,19 @@
 
 {% block body_block %}
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	{% if registered %}
-		<strong>Welcome back!</strong>
-		<a href="{% url 'index' %}">Return to the homepage.</a><br />
-	{% else %}
-	
 		<div class="boxed">
 			
-			<strong>Login</strong><br />
-			<form id="user_form" method="post" action="{% url 'login' %}"
-			enctype="multipart/form-data">
-
-			{% csrf_token %}
-
-	
-			{{ user_form.as_p }}
-			{{ profile_form.as_p }}
-
-
-			<input type="submit" name="submit" value="Login" />
+			
+			<h1>Login to GymBuddy</h1>
+			<form id="login_form" method="post" action="{% url 'login' %}">
+				{% csrf_token %}
+				Username: <input type="text" name="username" value="" size="50" />
+				<br />
+				Password: <input type="password" name="password" value="" size="50" />
+				<br />
+				<input type="submit" value="submit" />
+			</form>
 			
 			Not got an account? <a href="{% url 'signup' %}">Sign up here!</a><br />
-		</div>
-		
-		
-		
-	</form>
-	{% endif %}
+		</div>		
 {% endblock %}
