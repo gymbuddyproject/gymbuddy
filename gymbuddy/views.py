@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from gymbuddy.models import Gym
+from gymbuddy.forms import UserForm, ProfileForm
+
 
 def index(request):
     gym_list = Gym.objects.all()
