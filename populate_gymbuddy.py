@@ -17,6 +17,7 @@ def populate():
         "Y_Coord" : -4.270859,
         "Rating" :  4.5,
         "OpeningHours" : "Open 24 hours",
+        "WebsiteURL" : "https://www.puregym.com/gyms/glasgow-charing-cross/",
     }
 
     xercise4less_glasgow= {
@@ -27,6 +28,7 @@ def populate():
         "Rating": 3.5,
         "OpeningHours": "Monday - Friday: 6am-10pm, "
                         "Saturday - Sunday: 8am-8pm",
+        "WebsiteURL":"https://www.xercise4less.co.uk/find-a-gym/glasgow-gym/" ,
     }
 
     nuffield_health_fitness = {
@@ -37,6 +39,7 @@ def populate():
         "Rating": 3,
         "OpeningHours": "Monday - Friday: 6:30am-10pm, " \
                         "Saturday - Sunday: 8am-8pm",
+        "WebsiteURL": "https://www.nuffieldhealth.com/gyms/glasgow-west-end",
     }
 
     pure_gym_hope_street = {
@@ -46,6 +49,7 @@ def populate():
         "Y_Coord" : -4.259349,
         "Rating" :  4.4,
         "OpeningHours" : "Open 24 hours",
+        "WebsiteURL": "https://www.puregym.com/gyms/glasgow-hope-street/" ,
     }
 
     snap_fitness_glasgow = {
@@ -55,6 +59,7 @@ def populate():
         "Y_Coord" : -4.259423,
         "Rating" :  4.7,
         "OpeningHours" : "Open 24 hours",
+        "WebsiteURL":"https://www.snapfitness.com/uk/gyms/glasgow-central/" ,
     }
 
     gyms = [pure_gym_charing_cross, xercise4less_glasgow,
@@ -300,7 +305,8 @@ def populate():
                 c7, c8, c9, c10, c11, c12]
 
     for gym in gyms:
-         gym_added = add_gym(gym["GymName"], gym["Address"], gym["X_Coord"], gym["Y_Coord"], gym["Rating"], gym["OpeningHours"])
+         gym_added = add_gym(gym["GymName"], gym["Address"], gym["X_Coord"], gym["Y_Coord"], gym["Rating"],
+                             gym["OpeningHours"], gym["WebsiteURL"])
 
     for profile in profiles:
          following = []
@@ -319,8 +325,10 @@ def populate():
          comment_added = add_comment(comment["CommentID"], comment["Poster"], comment["OnPic"], comment["Date"], comment["Comment"])
 
 
-def add_gym(GymName, Address, X_Coord, Y_Coord, Rating, OpeningHours):
-    gym=Gym.objects.get_or_create(GymName=GymName, Address=Address, X_Coord=X_Coord, Y_Coord=Y_Coord, Rating=Rating, OpeningHours=OpeningHours)[0]
+def add_gym(GymName, Address, X_Coord, Y_Coord, Rating, OpeningHours, WebsiteURL):
+    gym=Gym.objects.get_or_create(GymName=GymName, Address=Address, X_Coord=X_Coord,
+                                  Y_Coord=Y_Coord, Rating=Rating, OpeningHours=OpeningHours,
+                                  WebsiteURL=WebsiteURL)[0]
     gym.save()
     return gym
 

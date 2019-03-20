@@ -12,6 +12,7 @@ class Gym(models.Model):
     Rating = models.DecimalField(max_length=3, decimal_places=2, max_digits=4)
     OpeningHours = models.CharField(max_length=50)
     slug = models.SlugField(blank=True, unique=True)
+    WebsiteURL = models.CharField(max_length=50, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.GymName)
