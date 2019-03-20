@@ -8,12 +8,19 @@
     {% block nav_block %}
     <div class="navigationBar">
     <nav>
-        <ul>
-            <li style="float:left"><a href="{% url 'index' %}">Home</a></li>
-			<heading>GYMBUDDY</heading>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-			<li><a href="{% url 'login' %}">Log In</a></li>
-        </ul>
+		<div class="invert">
+			<a href="{% url 'index' %}"><img class="logo" src= "{% static "images/logo.png" %} "></a>
+		</div>
+		<div class="title">
+			<a href="{% url 'index' %}">GYMBUDDY</a>
+		</div>
+        
+		<div class="invert">		
+			<div class="right">
+				<a href="{% url 'signup' %}">Sign Up</a>
+				<a href="{% url 'login' %}">Log In</a>
+			</div>
+		</div>
     </nav>
     </div>
     {% endblock %}
@@ -24,10 +31,15 @@
 {% endblock %}
 {% block footer_block %}
 <footer>
-<ul>
-    <li style="float:left"><a href="{% url 'about' %}">About Us</a></li>
-    <li style="float:right"><a href="{% url 'contactus' %}">Contact Us</a></li>
-</ul>
+	
+	<div class="leftFoot">
+		<a href="{% url 'about' %}">About Us</a>
+	</div>
+	<div class="rightFoot">
+		<a href="{% url 'contactus' %}">Contact Us</a>
+	</div>
+	
+
 </footer>
 {% endblock %}
 </body>
