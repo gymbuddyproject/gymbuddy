@@ -13,8 +13,8 @@ def populate():
     pure_gym_charing_cross = {
         "GymName" : "Pure Gym: Charing Cross",
         "Address" : "113 St George's Rd, Glasgow G3 6JA",
-        "X_Coord" : 55.8647428,
-        "Y_Coord" : -4.2852923,
+        "X_Coord" : 55.868682,
+        "Y_Coord" : -4.270859,
         "Rating" :  4.5,
         "OpeningHours" : "Open 24 hours",
     }
@@ -22,8 +22,8 @@ def populate():
     xercise4less_glasgow= {
         "GymName": "Xercise4Less Glasgow Gym",
         "Address": "200 Sauchiehall St, Glasgow G2 3DZ",
-        "X_Coord": 55.8650864,
-        "Y_Coord": -4.2891671,
+        "X_Coord": 55.865486,
+        "Y_Coord": -4.259427,
         "Rating": 3.5,
         "OpeningHours": "Monday - Friday: 6am-10pm, "
                         "Saturday - Sunday: 8am-8pm",
@@ -32,8 +32,8 @@ def populate():
     nuffield_health_fitness = {
         "GymName": "Nuffield Health Fitness & Wellbeing Gym",
         "Address": "141 Finnieston St, Glasgow G3 8HB",
-        "X_Coord": 55.8630307,
-        "Y_Coord": -4.2859026,
+        "X_Coord":  55.859291,
+        "Y_Coord":  -4.280722,
         "Rating": 3,
         "OpeningHours": "Monday - Friday: 6:30am-10pm, " \
                         "Saturday - Sunday: 8am-8pm",
@@ -42,8 +42,8 @@ def populate():
     pure_gym_hope_street = {
         "GymName" : "Pure Gym: Hope Street",
         "Address" : "67 Hope St, Glasgow G2 6AE",
-        "X_Coord" : 55.8569563,
-        "Y_Coord" : -4.2709029,
+        "X_Coord" : 55.860015,
+        "Y_Coord" : -4.259349,
         "Rating" :  4.4,
         "OpeningHours" : "Open 24 hours",
     }
@@ -51,8 +51,8 @@ def populate():
     snap_fitness_glasgow = {
         "GymName" : "Snap Fitness Glasgow",
         "Address" : "95 Hope St, Glasgow G2 6LD",
-        "X_Coord" : 55.8609825,
-        "Y_Coord" : -4.2883282,
+        "X_Coord" : 55.860794,
+        "Y_Coord" : -4.259423,
         "Rating" :  4.7,
         "OpeningHours" : "Open 24 hours",
     }
