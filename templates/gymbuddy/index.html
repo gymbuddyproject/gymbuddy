@@ -32,7 +32,7 @@
             {% for Gym in Gyms %}
                 var contentString = '<b>{{ Gym.GymName }}</b>' +
                                     '<p>Rating: {{ Gym.Rating }}</p>' +
-                                    '<a href="{% url 'index' %}">Find out more</a>'
+                                    '<a href="{% url 'gym_profile' Gym.slug %}">Find out more</a>'
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
