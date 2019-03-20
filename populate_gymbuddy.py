@@ -78,7 +78,7 @@ def populate():
         "GymID": 1,
         "Height": 118,
         "Weight": 72,
-        "Dob": "18/02/1999",
+        "Dob": "1999-02-18",
         "Experience": "Beginner",
     }
 
@@ -92,7 +92,7 @@ def populate():
         "GymID": 2,
         "Height": 100,
         "Weight": 85,
-        "Dob": "17/01/1979",
+        "Dob": "1979-02-21",
         "Experience": "Advanced",
     }
 
@@ -106,7 +106,7 @@ def populate():
         "GymID": 3,
         "Height": 162,
         "Weight": 55,
-        "Dob": "17/12/1996",
+        "Dob": "1996-08-09",
         "Experience": "Intermediate"
     }
 
@@ -120,7 +120,7 @@ def populate():
         "GymID": 3,
         "Height": 200,
         "Weight": 115,
-        "Dob": "02/10/1997",
+        "Dob": "1997-10-03",
         "Experience": "Intermediate"
     }
 
@@ -134,7 +134,7 @@ def populate():
         "GymID": 4,
         "Height": 183,
         "Weight": "78",
-        "Dob": "17/05/1986",
+        "Dob": "1986-01-02",
         "Experience": "Intermediate"
     }
     profiles = [spic99, K3LLy, ab96, aidan67, frankub07]
@@ -212,92 +212,92 @@ def populate():
 
     c0 = {
          "Poster" : spic99,
-         "OnPic" : pp3,
-         "Date " : "15/03/2019",
+         "OnPic" : 3,
+         "Date" : "2019-03-15 12:01",
          "Comment" : "Very good progress this week! Can't wait for the future!",
     }
 
     c1 = {
          "Poster": spic99,
-         "OnPic": pp1,
-         "Date ": "15/03/2019",
+         "OnPic": 1,
+         "Date": "2019-03-15 12:15",
          "Comment" : "Very good my friend",
     }
 
     c2 = {
          "Poster": ab96,
-         "OnPic": pp4,
-         "Date ": "15/03/2019",
+         "OnPic": 4,
+         "Date": "2019-03-15 08:09",
          "Comment": "Looks unreal hun x",
     }
 
     c3 = {
          "Poster": ab96,
-         "OnPic":pp1,
-         "Date ": "15/03/2019",
+         "OnPic":1,
+         "Date": "2019-03-15 08:30",
          "Comment": "Nice work!",
     }
 
     c4 = {
          "Poster": K3LLy,
-         "OnPic":pp9,
-         "Date ": "15/03/2019",
+         "OnPic":9,
+         "Date": "2019-03-15 14:09",
          "Comment": "Good work",
     }
 
     c5 = {
          "Poster": aidan67,
-         "OnPic": pp0,
-         "Date ": "12/03/2019",
+         "OnPic": 3,
+         "Date": "2019-03-16 15:00",
          "Comment": "See you have been slacking this week, lol!!",
     }
 
     c6 = {
          "Poster" : frankub07,
-         "OnPic": pp2,
-         "Date ": "12/03/2019",
+         "OnPic": 2,
+         "Date": "2019-03-16 15:07",
          "Comment": "Nice!",
     }
 
     c7 = {
          "Poster":frankub07,
-         "OnPic": pp6,
-         "Date ": "12/03/2019",
+         "OnPic": 6,
+         "Date": "2019-03-16 15:21",
          "Comment":"5 stars, lol!",
     }
 
     c8 = {
          "Poster": frankub07,
-         "OnPic":pp10,
-         "Date ": "12/03/2019",
+         "OnPic":10,
+         "Date": "2019-03-12 15:30",
          "Comment":"Yeah, okay I guess :/ ",
     }
 
     c9 = {
          "Poster": ab96,
-         "OnPic": pp3,
-         "Date ": "12/03/2019",
+         "OnPic": 3,
+         "Date": "2019-03-12 16:00",
          "Comment": "Class!",
     }
 
     c10 = {
          "Poster":spic99,
-         "OnPic": pp4,
-         "Date ": "12/03/2019",
+         "OnPic": 4,
+         "Date": "2019-03-17 21:00",
          "Comment": "Gj mate",
     }
 
     c11 = {
          "Poster": spic99,
-         "OnPic": pp8,
-         "Date ": "12/03/2019",
+         "OnPic": 8,
+         "Date": "2019-03-17 21:05",
          "Comment":"Another great week!",
     }
 
     c12 = {
          "Poster": K3LLy,
-         "OnPic": pp9,
-         "Date ": "11/03/2019",
+         "OnPic": 9,
+         "Date": "2019-03-17 21:55",
          "Comment":"Class!",
     }
 
@@ -313,7 +313,6 @@ def populate():
          follow_grab = profile.get("Following", [])
          for followee in follow_grab:
               following.append(followee["username"])
-         print(following)
          profile_added = add_profile(profile["username"], profile["email"], profile["password"], profile["AboutMe"], following,
                                   profile["ProfilePicture"], profile["GymID"], profile["Height"],
                                   profile["Weight"], profile["Dob"], profile["Experience"])
@@ -322,7 +321,7 @@ def populate():
          pic_added = add_pic(pic["UserName"]["username"], pic["Photo"], pic["Likes"])
 
     for comment in comments:
-         comment_added = add_comment(comment["CommentID"], comment["Poster"], comment["OnPic"], comment["Date"], comment["Comment"])
+         comment_added = add_comment(comment["Poster"]["username"], comment["OnPic"], comment["Date"], comment["Comment"])
 
 
 def add_gym(GymName, Address, X_Coord, Y_Coord, Rating, OpeningHours, WebsiteURL):
@@ -342,18 +341,22 @@ def add_profile(username, email, password, AboutMe, Following, ProfilePicture, G
 
     profile= Profile.objects.get_or_create(user=user,
                                            AboutMe=AboutMe, Following=Following, ProfilePicture=ProfilePicture, GymID=Gym.objects.get(id=GymID),
-                                             Height=Height, Weight=Weight, DoB='1999-12-12', Experience=Experience)[0]
+                                             Height=Height, Weight=Weight, DoB=Dob, Experience=Experience)[0]
     profile.save()
     return profile
 
 def add_pic(UserName, Photo, Likes):
-
-    pic=ProgressPics.objects.get_or_create(UserName=UserName, Photo=Photo, Likes=Likes)[0]
+    user=User.objects.get(username=UserName)
+    profile=Profile.objects.get(id=user.id)
+    pic=ProgressPics.objects.get_or_create(UserName=profile, Photo=Photo, Likes=Likes)[0]
     pic.save()
     return pic
 
 def add_comment(Poster, OnPic, Date, Comment):
-    comment=Comment.objects.get_or_create(Poster=Poster, OnPic=OnPic, Date=Date, Comment=Comment)[0]
+    user = User.objects.get(username=Poster)
+    profile = Profile.objects.get(id=user.id)
+    onpic = ProgressPics.objects.get(PhotoID=OnPic)
+    comment=Comments.objects.get_or_create(Poster=profile, OnPic=onpic, Date=Date, Comment=Comment)[0]
     comment.save()
     return comment
 
