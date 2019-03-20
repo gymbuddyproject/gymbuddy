@@ -42,8 +42,8 @@ def populate():
     pure_gym_hope_street = {
         "GymName" : "Pure Gym: Hope Street",
         "Address" : "67 Hope St, Glasgow G2 6AE",
-        "X_Coord" : 55.8609825,
-        "Y_Coord" : -4.2883282,
+        "X_Coord" : 55.8569563,
+        "Y_Coord" : -4.2709029,
         "Rating" :  4.4,
         "OpeningHours" : "Open 24 hours",
     }
