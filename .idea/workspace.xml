@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ae3c739b-5d3c-4d9c-96fc-261c7d5f7c11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gymbuddy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gymbuddy/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wad2_group_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/wad2_group_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/populate_gymbuddy.py" beforeDir="false" afterPath="$PROJECT_DIR$/populate_gymbuddy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gymbuddy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="391">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -40,14 +39,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wad2_group_project/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+            <state relative-caret-position="238">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/populate_gymbuddy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="352" column="14" selection-start-line="352" selection-start-column="14" selection-end-line="352" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -64,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/gymbuddy/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="34" column="98" selection-start-line="34" selection-start-column="98" selection-end-line="34" selection-end-column="98" />
+            <state relative-caret-position="510">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -73,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/gymbuddy/gymprofile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="68">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -82,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
+            <state relative-caret-position="1887">
               <caret line="111" column="24" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
             </state>
           </provider>
@@ -110,12 +118,12 @@
         <option value="$PROJECT_DIR$/templates/gymbuddy/contactus.html" />
         <option value="$PROJECT_DIR$/templates/gymbuddy/signup.html" />
         <option value="$PROJECT_DIR$/templates/gymbuddy/base.html" />
-        <option value="$PROJECT_DIR$/populate_gymbuddy.py" />
         <option value="$PROJECT_DIR$/gymbuddy/models.py" />
         <option value="$PROJECT_DIR$/gymbuddy/views.py" />
         <option value="$PROJECT_DIR$/templates/gymbuddy/gymprofile.html" />
         <option value="$PROJECT_DIR$/templates/gymbuddy/index.html" />
         <option value="$PROJECT_DIR$/wad2_group_project/urls.py" />
+        <option value="$PROJECT_DIR$/populate_gymbuddy.py" />
       </list>
     </option>
   </component>
@@ -133,7 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,6 +196,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,13 +237,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9376000" />
+    <option name="totallyTimeSpent" value="9653000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1435" height="812" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18129908" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18381241" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,15 +329,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
+        <state relative-caret-position="1887">
           <caret line="111" column="24" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/populate_gymbuddy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="350" lean-forward="true" selection-start-line="350" selection-end-line="350" />
+        <state relative-caret-position="402">
+          <caret line="352" column="14" selection-start-line="352" selection-start-column="14" selection-end-line="352" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -342,15 +350,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/gymbuddy/gymprofile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="68">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gymbuddy/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="391">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -359,8 +367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/gymbuddy/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="34" column="98" selection-start-line="34" selection-start-column="98" selection-end-line="34" selection-end-column="98" />
+        <state relative-caret-position="510">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -378,8 +386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wad2_group_project/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

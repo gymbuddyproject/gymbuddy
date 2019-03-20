@@ -349,6 +349,8 @@ def add_comment(Poster, OnPic, Date, Comment):
     comment.save()
     return comment
 
+
+#Check correct
 if __name__ == '__main__' :
     print("Starting population script")
     populate()
