@@ -14,7 +14,7 @@
                         <div class="gymProfilePerson">
                         <p>{{ Person }}</p>
                         <p>{{ Person.Experience }}</p>
-                        <img src= "{{ Person.ProfilePicture }}">
+                        <img src= "/media/{{ Person.ProfilePicture }}">
                         <a href="{% url 'user_profile' Person %}">Find out more</a>
                         </div>
                     {% endfor %}

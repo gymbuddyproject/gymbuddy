@@ -8,7 +8,7 @@
     <p>Height: {{ Person.Height }} cm</p>
     <p>About me: {{ Person.AboutMe }}</p>
     <p>Following: {{ Person.Following }} </p>
-        <img src= "{{ Person.ProfilePicture }}"></br>
+        <img src= "/media/{{ Person.ProfilePicture }}"></br>
     {% if Gym %}
         <a href="{% url 'gym_profile' Gym.slug %}">Check out my gym</gym></a>
     {% endif %}
@@ -16,7 +16,7 @@
     {% if Pics %}
         {% for Pic in Pics %}
             <div class="PhotoFeed">
-                <img src="{{ Pic.Photo }}">
+                <img src="/media/{{ Pic.Photo }}">
                 {{ Pic.Likes }}
                 {% if Comments %}
                     {% for Comment in Comments  %}

@@ -59,7 +59,8 @@ def signup(request):
             profile.user = user
 
             if 'ProfilePicture' in request.FILES:
-                profile.picture = request.FILES['ProfilePicture']
+                print("Picture Present")
+                profile.ProfilePicture = request.FILES['ProfilePicture']
             profile.save()
             registered = True
         else:
@@ -99,13 +100,6 @@ def userprofile(request, user_name):
         context_dict["Following"] = followingpeople
     except User.DoesNotExist:
         context_dict["Person"] = None
-
-    try:
-        gym_name = people.GymID.GymName
-        gym_person = Gym.objects.get(GymName=gym_name   )
-        context_dict["Gym"] = gym_person
-    except Gym.DoesNotExist:
-        context_dict["Gym"] = None
 
     try:
         pics = ProgressPics.objects.filter(UserName=(Profile.objects.get(user=(User.objects.get(username=user_name)))))

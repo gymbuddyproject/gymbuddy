@@ -26,8 +26,8 @@ class Gym(models.Model):
         return self.GymName
 
 
-def profile_directory_path(instance, PhotoID):
-    return '{0}/{1}'.format(instance.user.username, PhotoID)
+def profile_directory_path(instance, filename):
+    return '{0}/{1}'.format(instance.user.username, filename)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -49,8 +49,8 @@ class Profile(models.Model):
         return self.user.username
 
 
-def progress_directory_path(instance, PhotoID):
-    return '{0}/progress_pics/{1}'.format(instance.UserName.user.username, PhotoID)
+def progress_directory_path(instance, filename):
+    return '{0}/progress_pics/{1}'.format(instance.UserName.user.username, filename)
 
 
 class ProgressPics(models.Model):

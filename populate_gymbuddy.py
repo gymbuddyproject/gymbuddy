@@ -6,6 +6,7 @@ import django
 django.setup()
 from gymbuddy.models import Gym, ProgressPics, Profile, Comments
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 def populate():
     #GYMS
@@ -74,7 +75,7 @@ def populate():
         "password": "Glasgow617",
         "AboutMe": "I'm 20 years old and just moved to Glasgow for university. I'm relatively new to the world of fitness and would like to find an affordable nearby gym with good user ratings. I'd also like to find a more experienced partner to help show me the ropes.",
         "Following": [],
-        "ProfilePicture": "/media/spic99/profile_pic.jpg",
+        "ProfilePicture": "spic99/profile_pic.jpg",
         "GymID": 1,
         "Height": 118,
         "Weight": 72,
@@ -88,7 +89,7 @@ def populate():
         "password": "K311y1",
         "AboutMe": "I'm 40 years old living in the West End of Glasgow. Veteran Powerlifter with a keen eye for strength. Looking for an equally determined training partner who can spot me and take pictures of my lifting. Hit me up if interested.",
         "Following": [spic99],
-        "ProfilePicture": "/media/K3LLy/profile_pic.jpg",
+        "ProfilePicture": "K3LLy/profile_pic.jpg",
         "GymID": 2,
         "Height": 100,
         "Weight": 85,
@@ -102,7 +103,7 @@ def populate():
         "password": "Celtic67",
         "AboutMe": "22. Glasgow. Puregym. Usually in gym between 6 and 7 most evenings. Hmu if you want to go together.",
         "Following": [K3LLy, spic99],
-        "ProfilePicture": "/media/ab96/profile_pic.jpg",
+        "ProfilePicture": "ab96/profile_pic.jpg",
         "GymID": 3,
         "Height": 162,
         "Weight": 55,
@@ -116,7 +117,7 @@ def populate():
         "password": "Lisbon67",
         "AboutMe": "Keen rugby player and enjoy heavy lifting in spair time. Let me know what you think of my progress pics. open to any tips you may have.",
         "Following": [K3LLy, ab96],
-        "ProfilePicture": "/media/aidan67/profile_pic.jpg",
+        "ProfilePicture": "aidan67/profile_pic.jpg",
         "GymID": 3,
         "Height": 200,
         "Weight": 115,
@@ -130,7 +131,7 @@ def populate():
         "password": "St3veG123",
         "AboutMe": "Frank, Glasgow, 32. Member of Snap Fitness, due to work usually only in at weekends during the day. Always open to meeting new people and a gym buddy. I like to keep fit but don't lift too heavy weights so might not suit everyone. Let us know if you are interested.",
         "Following": [aidan67, K3LLy],
-        "ProfilePicture": "/media/frankub07/profile_pic.jpg",
+        "ProfilePicture": "frankub07/profile_pic.jpg",
         "GymID": 4,
         "Height": 183,
         "Weight": "78",
@@ -144,63 +145,63 @@ def populate():
 #
     pp0 = {
         "UserName" : aidan67,
-        "Photo" : "/media/aidan67/progress_pics/1.jpg",
+        "Photo" : "aidan67/progress_pics/1.jpg",
         "Likes" : 23,
     }
     pp1 = {
         "UserName": frankub07,
-        "Photo": "/media/frankub07/progress_pics/1.jpg",
+        "Photo": "frankub07/progress_pics/1.jpg",
         "Likes": 45,
     }
 
     pp2 = {
         "UserName": frankub07,
-        "Photo": "/media/frankub07/progress_pics/2.jpg",
+        "Photo": "frankub07/progress_pics/2.jpg",
         "Likes": 12,
     }
 
     pp3 = {
         "UserName": ab96,
-        "Photo": "/media/ab96/progress_pics/1.jpg",
+        "Photo": "ab96/progress_pics/1.jpg",
         "Likes": 0,
     }
 
     pp4 = {
         "UserName": ab96,
-        "Photo": "/media/ab96/progress_pics/2.jpg",
+        "Photo": "ab96/progress_pics/2.jpg",
         "Likes": 1,
     }
 
     pp5 = {
         "UserName": ab96,
-        "Photo": "/media/ab96/progress_pics/3.jpg",
+        "Photo": "ab96/progress_pics/3.jpg",
         "Likes": 2,
     }
     pp6 = {
         "UserName": ab96,
-        "Photo": "/media/ab96/progress_pics/4.jpg",
+        "Photo": "ab96/progress_pics/4.jpg",
         "Likes": 1,
     }
 
     pp7 = {
         "UserName": spic99,
-        "Photo": "/media/spic99/progress_pics/1.jpg",
+        "Photo": "spic99/progress_pics/1.jpg",
         "Likes": 345,
     }
 
     pp8 = {
         "UserName": spic99,
-        "Photo": "/media/spic99/progress_pics/2.jpg",
+        "Photo": "spic99/progress_pics/2.jpg",
         "Likes": 512,
     }
     pp9 = {
         "UserName": spic99,
-        "Photo": "/media/spic99/progress_pics/3.jpg",
+        "Photo": "spic99/progress_pics/3.jpg",
         "Likes": 489,
     }
     pp10 = {
         "UserName": spic99,
-        "Photo": "/media/spic99/progress_pics/4.jpg",
+        "Photo": "spic99/progress_pics/4.jpg",
         "Likes": 777,
     }
 
@@ -332,6 +333,7 @@ def add_gym(GymName, Address, X_Coord, Y_Coord, Rating, OpeningHours, WebsiteURL
     return gym
 
 def add_user(username, email, password):
+    password=make_password(password, hasher='pbkdf2_sha256')
     user = User.objects.get_or_create(username=username, email=email, password=password)[0]
     user.save()
     return user
