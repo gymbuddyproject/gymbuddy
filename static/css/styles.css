@@ -9,13 +9,17 @@ html, body {
         margin: 0;
         padding: 0;
 		max-width: 100%;
+		
       }
-
+	  
+::-webkit-scrollbar {
+display: none;
+}
 .navigationBar {
 	position:fixed;
 	z-index:1000;
 	width:100%;
-    background-color: #333;
+    background-color: #0C374D;
     padding: 0em;
     color: white;
 	
@@ -89,7 +93,6 @@ html, body {
 	display: inline-block;
 	font-size: 40px;
 	width:100%;
-	background: url("/static/images/strongman.jpg");
 	background-size: 100%;
 
 
@@ -118,6 +121,25 @@ html, body {
 	text-align: center;
 }
 
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 25em 25em;
+  grid-gap: 2em;
+  color: #444;
+}
+
+
+.box {
+  color:white; 
+  font-size: 1em;
+}
+
+.box a{
+	color: #43ABC9;
+	text-decoration: none;
+}
+
 .signup-form{
 	display:flex;
 	background-color: rgb(0,0,0); /* Fallback color */
@@ -140,14 +162,9 @@ html, body {
 	overflow-y: scroll;
 }
 
-.signup-bg-image {
-    height: 23em;
-    display: inline-block;
-    font-size: 40px;
-    width: 100%;
-    background: url(/static/images/signupbg.jpg) center center / cover no-repeat;
-    background-position: center center;
-    background-repeat: no-repeat;
+.signup-form a{
+	color: #43ABC9;
+	text-decoration: none;
 }
 
 .gym-profile {
@@ -181,17 +198,7 @@ html, body {
 	transform: scale(1.14);
 	
 }
-.boxed {
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		align-items:center;
-		text-align:center;
-		min-height:75vh;
-		left:50;
-		bottom:100;
-		border: 1px solid green;
-			}
+
 
 
 
@@ -202,7 +209,7 @@ footer {
 	z-index:1000;
 	width:100%;
 	padding:0;
-    background-color: #333;
+    background-color: #0C374D;
     color: white;
 	
 }

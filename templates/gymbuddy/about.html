@@ -1,6 +1,28 @@
 {% extends 'gymbuddy/base.html' %}
+{% load staticfiles %}
 {% block body_block %}
+<img class="bg-image" src= "{% static "images/aboutus.jpg" %} "></a>
 <div class="bg-text">
-	<p>Use the map to search for gyms and training partners.</p>
+	<div class="wrapper">
+		<div class="box">
+				<h1>Our mission</h1>
+				<p>To bring a new way to find your next gym partner, and share your journey with the world!</p>
+		</div>	
+		<div class="box">
+				<h1>How to get started?</h1>
+				<p>Simply <a href=" {% url 'signup' %}">Sign Up </a> and find your gym on the <a href=" {% url 'index' %}">Map! </a> 
+				From there, explore the gyms users and see who fits the bill!</p>
+		</div>
+		<div class="box">
+				<h1>'Who can see what I share?'</h1>
+				<p>On GymBuddy, we allow all users to see your profile so they can see if they'd like 
+				to buddy up or even follow you! Keep your private life private.</p>
+		</div>
+		
+		<div class="box">
+				<h1>Cant find your gym?</h1>
+				<p>You can contact us via our email address and we will do our best to add your gym ASAP!</p> 
+		</div>
+	</div>
 </div>
 {% endblock %}
