@@ -7,19 +7,17 @@
 
 {% block body_block %}
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-		<div class="boxed">
-			
-			
+		<div class="signup-bg-image"></div>
+		<div class="signup-form">
 			<h1>Login to GymBuddy</h1>
-			<form id="login_form" method="post" action="{% url 'login' %}">
-				{% csrf_token %}
-				Username: <input type="text" name="username" value="" size="50" />
-				<br />
-				Password: <input type="password" name="password" value="" size="50" />
-				<br />
-				<input type="submit" value="submit" />
+			<form id="login_form" method="post" action="/login/">
+				<input type="hidden" name="csrfmiddlewaretoken" value="DLmYsmtfH2uUmIwE63VQ4Vz1XGSJOLzE1UeX0VEqUqP1gYAGIxxepbDCUD1BTIEq">
+				Username: <input type="text" name="username" value="" size="50">
+				<br>
+				Password: <input type="password" name="password" value="" size="50">
+				<br>
+				<input type="submit" value="submit">
 			</form>
-			
-			Not got an account? <a href="{% url 'signup' %}">Sign up here!</a><br />
-		</div>		
+		</div>	
+			Not got an account? <a href="/signup/">Sign up here!</a><br>	
 {% endblock %}
