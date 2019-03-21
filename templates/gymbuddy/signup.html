@@ -10,7 +10,8 @@
 	{% if registered %}
 		<div class="bg-text">
 		<strong>Thank you for signing up to GymBuddy!</strong>
-		<a href="{% url 'index' %}">Return to the homepage.</a><br />
+		<a href="{% url 'login' %}">Please login with your newly created credentials</a><br/>
+		<a href="{% url 'index' %}">Or return to the homepage</a><br/>
 		</div>
 	{% else %}
 		<div class="signup-bg-image"></div>
