@@ -17,6 +17,7 @@
                 <form action="{% url 'edit_profile' %}">
                 <input type="submit" value="Edit Profile" />
                 </form>
+				<a href="{% url 'add_progresspic' user.username %}">Add a Progress Pic</a>
 			{% endifequal %}
     {% endif %}
     <p>Photos here</p>

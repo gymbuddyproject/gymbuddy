@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from gymbuddy.models import Gym
-from gymbuddy.forms import UserForm, ProfileForm, EditForm
+from gymbuddy.forms import UserForm, ProfileForm, EditForm, CommentForm, PictureForm
 from gymbuddy.models import Profile
 from gymbuddy.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -141,8 +141,52 @@ def edit_profile(request):
                   'gymbuddy/edit_profile.html',
                   {'Profile':profile,
                    'edit_form': edit_form})
-				   
-    
+
+def add_comment(request, user_name, onphoto):
+    try:
+        poster = Profile.objects.get(user=User.objects.get(username=user_name))
+        image = onphoto
+    except Profile.DoesNotExist or ProgressPics.DoesNotExist:
+        poster = None
+        image = None
+    form = CommentForm()
+
+    if request.method == 'POST':
+        form = CommentForm(data=request.POST)
+        
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.Poster = poster
+            comment.OnPic = image
+            comment.save(commit=True)
+            return userprofile(request, user_name)
+        else:
+            print(form.errors)
+    return render(request, 'gymbuddy/add_comment.html', {'form': form})
+
+def add_progresspic(request, user_name):
+    try:
+        poster = Profile.objects.get(user=User.objects.get(username=user_name))
+    except Profile.DoesNotExist:
+        poster = None
+    form = PictureForm()
+    if request.method == 'POST':
+        form = PictureForm(request.POST)
+        if form.is_valid():
+            if poster:
+                picture = form.save(commit=False)
+                picture.UserName = poster
+                picture.Likes = 0
+                if 'Photo' in request.FILES:
+                    print("Picture Present")
+                    picture.Photo = request.FILES['Photo']
+                
+                picture.save()
+                return userprofile(request, user_name)
+        else:
+            print(form.errors)
+    context_dict = {'form':form, 'UserName': poster }
+    return render(request, 'gymbuddy/add_progresspic.html', context_dict)
 
 def test(request):
     return render(request, 'gymbuddy/tester.html')
