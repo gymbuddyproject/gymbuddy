@@ -15,7 +15,7 @@
 		<div class="boxed">
 		<div>	
 			<strong>Edit Your Account</strong><br />
-			<form id="edit_form" method="post" action="{% url 'edit_profile' %}"
+			<form id="edit_form" method="post" action="{% url 'edit_profile' Person %}"
 			enctype="multipart/form-data">
 
 			{% csrf_token %}

@@ -125,20 +125,29 @@ def userprofile(request, user_name):
 
     return render(request, 'gymbuddy/userprofile.html', context=context_dict)
 
+@login_required
 def edit_profile(request):
+    try:
+        profile = Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        return redirect('index')
+
     if request.method == 'POST':
-        edit_form = EditForm(data=request.POST)
-
+        edit_form = EditForm(data=request.POST, instance=profile)
+        
         if edit_form.is_valid():
-            edit = edit_form.save(commit=False)
-            edit.user = user
-
-            if 'ProfilePicture' in request.FILES:
-                edit.picture = request.FILES['ProfilePicture']
-            edit.save()
+            profile = edit_form.save(commit=True)
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            print(edit_form.errors)
     else:
         edit_form = EditForm()
-    return render(request, 'gymbuddy/edit_profile.html', {'edit_form': edit_form})
+
+    return render(request,
+                  'gymbuddy/edit_profile.html',
+                  {'Profile':profile,
+                   'edit_form': edit_form})
+				   
     
 
 def test(request):
