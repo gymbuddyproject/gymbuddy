@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.contrib import admin
 from gymbuddy import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "gymbuddy"
 urlpatterns = [
@@ -15,4 +17,4 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^edit$', views.edit_profile, name='edit_profile'),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
