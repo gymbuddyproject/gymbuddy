@@ -8,8 +8,10 @@
 {% block body_block %}
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	{% if registered %}
+		<div class="boxed">
 		<strong>Thank you for signing up to GymBuddy!</strong>
 		<a href="{% url 'index' %}">Return to the homepage.</a><br />
+		</div>
 	{% else %}
 	
 		<div class="boxed">

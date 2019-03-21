@@ -8,6 +8,7 @@ html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+		max-width: 100%;
       }
 
 .navigationBar {
@@ -39,7 +40,7 @@ html, body {
 .logo{
 	
 	left:1em;
-	width:4em;
+	width:3em;
 	height:auto;
 	transition: transform .2s; /* Animation */
 	
@@ -53,7 +54,7 @@ html, body {
 	position:relative;
 	margin-left: 0 auto;
     width: 50%;
-	font-size: 3em;
+	font-size: 2.5em;
 	transition: transform .2s;
 }
 
@@ -62,38 +63,34 @@ html, body {
 }
 .right {
 	position:relative;
-	top:0.85em;
+	top:0.5em;
 	font-family: 'IBM Plex Sans', sans-serif;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	float:right;
 }
 
 .leftFoot {
 	position:relative;
-	top:0.5em;
 	font-family: 'IBM Plex Sans', sans-serif;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	float:left;
 }
 
 .rightFoot {
 	position:relative;
-	top:0.5em;
 	font-family: 'IBM Plex Sans', sans-serif;
-	font-size: 1.5em;
+	font-size: 0.75em;
+	top:0.5em;
 	float:right;
+	margin-right:1em;
 }
 .bg-image {
-	height:22em;
+	height:23em;
 	display: inline-block;
 	font-size: 40px;
 	width:100%;
 	background: url("/static/images/strongman.jpg");
 	background-size: 100%;
-	/* Add the blur effect */
-    filter: blur(8px);
-    -webkit-filter: blur(7px);
-	transform: scale(1.05);
 
 
     /* Center and scale the image nicely */
@@ -146,7 +143,7 @@ html, body {
 	
 }
 .resize:hover {
-	transform: scale(1.2);
+	transform: scale(1.14);
 	
 }
 .boxed {
@@ -169,9 +166,8 @@ footer {
 	bottom:0;
 	z-index:1000;
 	width:100%;
-	height: 7.5%;
+	height: 5.5%;
     background-color: #333;
-    padding: 0em;
     color: white;
 	
 }
