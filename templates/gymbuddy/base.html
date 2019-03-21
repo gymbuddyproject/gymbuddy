@@ -19,9 +19,8 @@
 		<div class="invert">		
 			<div class="right">
 			{% if user.is_authenticated %}
-				Logged in as {{user.username}}
-				<li><a href="{% url 'logout' %}">Logout</a></li>
-				<li><a href="{% url 'edit_profile' %}">Edit</a></li>
+				<a href="{% url 'logout' %}">Logout</a>
+				<a href="{% url 'user_profile' user.username %}">View Profile</a>
 			{% else %}
 				<a href="{% url 'signup' %}">Sign Up</a>
 				<a href="{% url 'login' %}">Log In</a>

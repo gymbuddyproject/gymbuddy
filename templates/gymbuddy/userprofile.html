@@ -10,7 +10,14 @@
     <p>Following: {{ Person.Following }} </p>
         <img src= "/media/{{ Person.ProfilePicture }}"></br>
     {% if Gym %}
-        <a href="{% url 'gym_profile' Gym.slug %}">Check out my gym</gym></a>
+        <a href="{% url 'gym_profile' Gym.slug %}">Check out my gym</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+            {% ifequal user.username  Person.user.username %}
+                <form action="{% url 'edit_profile' %}">
+                <input type="submit" value="Edit Profile" />
+                </form>
+			{% endifequal %}
     {% endif %}
     <p>Photos here</p>
     {% if Pics %}
