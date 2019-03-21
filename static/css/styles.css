@@ -119,22 +119,29 @@ display: none;
 	width: 50%;
 	padding: 20px;
 	text-align: center;
+	overflow: auto;
 }
 
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 25em 25em;
-  grid-gap: 2em;
-  color: #444;
+	display: inline-grid;
+	grid-template-columns: 15em 15em;
+	grid-gap: 2em;
+	color: #444;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 
 .box {
-  color:white; 
-  font-size: 1em;
+	color:white; 
+	font-size: 1em;
 }
 
+.box h1 {
+	font-weight:bold;
+	font-size: 2em;
+	text-decoration: underline;
+}
 .box a{
 	color: #43ABC9;
 	text-decoration: none;
