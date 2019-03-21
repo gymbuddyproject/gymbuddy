@@ -60,6 +60,7 @@ display: none;
     width: 50%;
 	font-size: 2.5em;
 	transition: transform .2s;
+	text-decoration: underline;
 }
 
 .title a:hover{
@@ -106,7 +107,7 @@ display: none;
 
 .bg-text {
 	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+	background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
 	color: white;
 	font-weight: bold;
 	font-family: 'IBM Plex Sans', sans-serif;
@@ -174,7 +175,7 @@ display: none;
 	text-decoration: none;
 }
 
-.gym-profile {
+.gym-info {
     background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
 	color: white;
@@ -183,18 +184,43 @@ display: none;
 	font-size: 1em;
 	border: 3px solid #f1f1f1;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 10%;
+	left: 5%;
 	width: 85%;
 	height: 60%;
 	padding: 20px;
 
 }
 
-.gymProfilePerson {
-    border:1px solid white;
+.gym-people{
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+	color: white;
+	font-weight: bold;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 1em;
+	border: 3px solid #f1f1f1;
+	position: absolute;
+	top: 40%;
+	left: 5%;
+	width: 30%;
+	height: 50%;
+	padding: 20px;
 }
+
+.profilePic {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+	border-radius: 1.5em;
+}
+
+
+	
 .resize {
 	width:6%;
 	height:auto;
