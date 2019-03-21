@@ -1,7 +1,10 @@
 {% extends 'gymbuddy/base.html' %}
+{% load staticfiles %}
 {% block body_block %}
     {% if Gym %}
+	<img class="profile-bg" src= "{% static "images/blue.jpg" %} "></a>
         <div class="gym-info">
+			<h1>GYM INFORMATION</h1>
             <p>Name: {{ Gym.GymName }}</p>
             <p>Rating: {{ Gym.Rating }}</p>
             <p>Opening Hours: {{ Gym.OpeningHours }}</p>
@@ -10,12 +13,21 @@
                 <input type="submit" value="View Gym's webpage" />
             </form>
 			<input type="submit" name="submit" value="Follow" />
+		</div>	
+			
+			
+		<div class="gym-map">
+		<img class = "map-image" src= "{% static "images/map.jpg" %} "></a>
+		<p>This is where the map will go</p>
+		</div>
+		
+		
 		<div class="gym-people">
                 {% if People %}
                     {% for Person in People %}
-                        <div class="wrapper">
+                        <div class="pic-wrapper">
 							<div class="person">
-								<p>{{ Person }}</p>
+								<p>Name: {{ Person }}</p>
 								<p>{{ Person.Experience }}</p>
 								<a href="{% url 'user_profile' Person %}"><img class="profilePic" src= "/media/{{ Person.ProfilePicture }}"></a>
 							</div>
