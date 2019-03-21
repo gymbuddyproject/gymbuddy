@@ -152,12 +152,15 @@ html, body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 80%;
-	height: 50%;
+	width: 85%;
+	height: 60%;
 	padding: 20px;
 
 }
 
+.gymProfilePerson {
+    border:1px solid white;
+}
 .resize {
 	width:6%;
 	height:auto;

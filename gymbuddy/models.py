@@ -29,7 +29,6 @@ class Gym(models.Model):
 def profile_directory_path(instance, PhotoID):
     return '{0}/{1}'.format(instance.user.username, PhotoID)
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     AboutMe = models.TextField(max_length=300, blank=True)

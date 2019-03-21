@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 
+from gymbuddy.models import ProgressPics
+from gymbuddy.models import Comments
 
 def index(request):
     gym_list = Gym.objects.all()
@@ -93,8 +95,34 @@ def userprofile(request, user_name):
     try:
         people = Profile.objects.get(user=(User.objects.get(username=user_name)))
         context_dict["Person"] = people
+        followingpeople = people.Following
+        context_dict["Following"] = followingpeople
     except User.DoesNotExist:
         context_dict["Person"] = None
+
+    try:
+        gym_name = people.GymID.GymName
+        gym_person = Gym.objects.get(GymName=gym_name   )
+        context_dict["Gym"] = gym_person
+    except Gym.DoesNotExist:
+        context_dict["Gym"] = None
+
+    try:
+        pics = ProgressPics.objects.filter(UserName=(Profile.objects.get(user=(User.objects.get(username=user_name)))))
+        context_dict["Pics"] = pics
+    except ProgressPics.DoesNotExist:
+        context_dict["Pics"] = None
+
+    try:
+        user_comments = []
+        comments = Comments.objects.all()
+        for comment in comments:
+            if comment.OnPic in pics:
+                user_comments.append(comment)
+        context_dict["Comments"] = user_comments
+    except Comments.DoesNotExist:
+        context_dict["Comments"] = None
+
     return render(request, 'gymbuddy/userprofile.html', context=context_dict)
 
 def edit_profile(request):

@@ -2,7 +2,32 @@
 {% block body_block %}
 {% if Person %}
     <div class="gym-profile">
+    <p>Welcome to {{ Person }}'s profile</p>
+    <p>Date of birth: {{ Person.DoB }}</p>
     <p>Weight: {{ Person.Weight }} kg</p>
+    <p>Height: {{ Person.Height }} cm</p>
+    <p>About me: {{ Person.AboutMe }}</p>
+    <p>Following: {{ Person.Following }} </p>
+        <img src= "{{ Person.ProfilePicture }}"></br>
+    {% if Gym %}
+        <a href="{% url 'gym_profile' Gym.slug %}">Check out my gym</gym></a>
+    {% endif %}
+    <p>Photos here</p>
+    {% if Pics %}
+        {% for Pic in Pics %}
+            <div class="PhotoFeed">
+                <img src="{{ Pic.Photo }}">
+                {{ Pic.Likes }}
+                {% if Comments %}
+                    {% for Comment in Comments  %}
+                        {% if Comment.OnPic == Pic %}
+                            {{ Comment.Comment }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
     </div>
 {% else %}
     <div class="gym-profile">

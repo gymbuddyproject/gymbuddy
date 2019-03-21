@@ -6,16 +6,19 @@
             <p>Rating: {{ Gym.Rating }}</p>
             <p>OpeningHours: {{ Gym.OpeningHours }}</p>
             <p>Address: {{ Gym.Address }}</p>
-            <a href="{{ Gym.WebsiteURL}}">Sign up now</a>
+            <form action="{{ Gym.WebsiteURL}}">
+                <input type="submit" value="View Gym's webpage" />
+            </form>
                 {% if People %}
                     {% for Person in People %}
                         <div class="gymProfilePerson">
                         <p>{{ Person }}</p>
+                        <p>{{ Person.Experience }}</p>
+                        <img src= "{{ Person.ProfilePicture }}">
                         <a href="{% url 'user_profile' Person %}">Find out more</a>
                         </div>
                     {% endfor %}
                 {% endif %}
-
         </div>
     {% else %}
         <div class="gym-profile">
