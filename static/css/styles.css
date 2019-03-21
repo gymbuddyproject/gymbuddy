@@ -15,9 +15,39 @@ html, body {
 ::-webkit-scrollbar {
 display: none;
 }
+
+.flex-container {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+			z-index:1000;
+        }
+
+        #flex-item {
+           text-align: center;
+            margin: auto;
+        }
+
 .navigationBar {
 	position:fixed;
-	z-index:1000;
+	z-index:999;
 	width:100%;
     background-color: #0C374D;
     padding: 0em;
@@ -282,7 +312,7 @@ display: none;
 footer {
 	position:fixed;
 	bottom:0;
-	z-index:1000;
+	z-index:999;
 	width:100%;
 	padding:0;
     background-color: #0C374D;
