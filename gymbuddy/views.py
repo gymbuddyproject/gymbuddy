@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from gymbuddy.models import Gym
-from gymbuddy.forms import UserForm, ProfileForm
+from gymbuddy.forms import UserForm, ProfileForm, EditForm
 from gymbuddy.models import Profile
 from gymbuddy.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
 
 
 def index(request):
@@ -95,6 +96,22 @@ def userprofile(request, user_name):
     except User.DoesNotExist:
         context_dict["Person"] = None
     return render(request, 'gymbuddy/userprofile.html', context=context_dict)
+
+def edit_profile(request):
+    if request.method == 'POST':
+        edit_form = EditForm(data=request.POST)
+
+        if edit_form.is_valid():
+            edit = edit_form.save(commit=False)
+            edit.user = user
+
+            if 'ProfilePicture' in request.FILES:
+                edit.picture = request.FILES['ProfilePicture']
+            edit.save()
+    else:
+        edit_form = EditForm()
+    return render(request, 'gymbuddy/edit_profile.html', {'edit_form': edit_form})
+    
 
 def test(request):
     return render(request, 'gymbuddy/tester.html')

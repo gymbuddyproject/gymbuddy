@@ -52,13 +52,21 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 class ProfileForm(forms.ModelForm):
-    AboutMe = forms.CharField(widget=forms.Textarea, max_length=300, required=False)
     ProfilePicture = forms.ImageField(required=False)
-    Height = forms.IntegerField(help_text="Please Enter your Height(cm)", required=False)
-    Weight = forms.IntegerField(help_text="Please Enter your Weight(kg)", required=False)
     DoB = forms.DateField(help_text="Please Enter your Date of Birth")
     GymID = forms.IntegerField(widget=forms.HiddenInput(), required=False)
     Following = forms.CharField(widget=forms.HiddenInput(), initial=" ", required=False)
     class Meta:
         model = Profile
-        fields = ('AboutMe', 'ProfilePicture', 'Height', 'Weight', 'DoB', 'Experience') 
+        fields = ('AboutMe', 'ProfilePicture', 'Height', 'Weight', 'DoB', 'Experience')
+
+class EditForm(forms.ModelForm):
+    ProfilePicture = forms.ImageField(required=False, initial=Profile.ProfilePicture)
+    AboutMe = forms.CharField(widget=forms.Textarea, max_length=300, required=False, initial=Profile.AboutMe)
+    Height = forms.IntegerField(help_text="Please Enter your Height(cm)", required=False, initial=Profile.Height)
+    Weight = forms.IntegerField(help_text="Please Enter your Weight(kg)", required=False, initial=Profile.Weight)
+
+    class Meta:
+        model = Profile
+        fields = ('ProfilePicture', 'AboutMe', 'Height', 'Weight', 'Experience')
+

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-	Sign Up
+	Edit Profile
 {% endblock %}
 
 {% block body_block %}
@@ -14,26 +14,18 @@
 	
 		<div class="boxed">
 		<div>	
-			<strong>Create Your Account</strong><br />
-			<form id="user_form" method="post" action="{% url 'signup' %}"
+			<strong>Edit Your Account</strong><br />
+			<form id="edit_form" method="post" action="{% url 'edit_profile' %}"
 			enctype="multipart/form-data">
 
 			{% csrf_token %}
 
 	
-			{{ user_form.as_p }}
-			{{ profile_form.as_p }}
-
+			{{ edit_form.as_p }}
 
 			<input type="submit" name="submit" value="Register" />
 			</form>
-		</div>
-		<div>
-			Already got an account? <a href="{% url 'login' %}">Log in here!</a><br />
-		</div>
-		
-		
-		
-		
+
+		</div>	
 	{% endif %}
 {% endblock %}
