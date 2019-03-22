@@ -184,6 +184,7 @@ display: none;
 	background-size: 100%;
     background-position: center;
     background-size: cover;
+	
  
 }
 .gym-info {
@@ -201,6 +202,7 @@ display: none;
 	height: 50%;
 	padding: 20px;
 	overflow:auto;
+	line-height: 3em;
 
 }
 
@@ -271,6 +273,24 @@ display: none;
 	border-style: solid;
 }
 
+.user-profilePic {
+    position: absolute;
+    float: left;
+	left:6.5em;
+    width:  30em;
+    height: 25em;
+	border-radius: 1.5em;
+	border: white;
+	border-style: solid;
+}
+
+
+
+.profilePic-shift {
+	position: absolute;
+	float: right;
+	top:10em;
+}
 
 	
 .resize {
