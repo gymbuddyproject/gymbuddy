@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-
+from django.views.generic import UpdateView
 from gymbuddy.models import ProgressPics
 from gymbuddy.models import Comments
 
@@ -40,6 +40,13 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def user_deactivateaccount(request):
+    request.user.is_active = False
+    request.user.save()
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
@@ -123,28 +130,31 @@ def userprofile(request, user_name):
 
     return render(request, 'gymbuddy/userprofile.html', context=context_dict)
 
+from django.views.generic import UpdateView
+
 @login_required
-def edit_profile(request):
+def edit_profile(request, user_name):
     try:
-        profile = Profile.objects.get(user=request.user)
-    except Profile.DoesNotExist:
-        return redirect('index')
+        user = User.objects.get(username=user_name)
+    except User.DoesNotExist:
+        pass
 
+    profile= Profile.objects.get(user=user)
+    form = EditForm()
     if request.method == 'POST':
-        edit_form = EditForm(data=request.POST, instance=profile)
-        
-        if edit_form.is_valid():
-            profile = edit_form.save(commit=True)
-            return HttpResponseRedirect(reverse('index'))
+        form = EditForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save(commit=True)
+            return userprofile(request, user_name)
         else:
-            print(edit_form.errors)
+            print(form.errors)
     else:
-        edit_form = EditForm()
+        form = EditForm(instance=request.user)
 
-    return render(request,
-                  'gymbuddy/edit_profile.html',
-                  {'Profile':profile,
-                   'edit_form': edit_form})
+    return render(request, 'gymbuddy/edit_profile.html', {'form': form})
+    
+
+
 
 def add_comment(request, user_name, pic_id):
     try:

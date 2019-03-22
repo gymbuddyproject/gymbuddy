@@ -7,25 +7,13 @@
 
 {% block body_block %}
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	{% if registered %}
-		<strong>Thank you for signing up to GymBuddy!</strong>
-		<a href="{% url 'index' %}">Return to the homepage.</a><br />
-	{% else %}
-	
-		<div class="boxed">
-		<div>	
-			<strong>Edit Your Account</strong><br />
-			<form id="edit_form" method="post" action="{% url 'edit_profile' Person %}"
-			enctype="multipart/form-data">
-
-			{% csrf_token %}
-
-	
-			{{ edit_form.as_p }}
-
-			<input type="submit" name="submit" value="Register" />
+	<div class="boxed">
+	<div>
+		<strong>Edit Your Account</strong><br />
+			<form method="post" action="{% url 'edit_profile' user.username %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Update" />
 			</form>
-
-		</div>	
-	{% endif %}
+	</div>	
 {% endblock %}
