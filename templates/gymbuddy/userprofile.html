@@ -3,9 +3,8 @@
 {% block body_block %}
 	{% if user.is_authenticated %}
 		{% if Person %}
-		<img class="profile-bg" src= "{% static "images/blue.jpg" %} "></a>
 			<div class="gym-info">
-				<h1>Welcome to {{ Person }}'s profile</h1>
+				<h1>{{ Person }}</h1>
 				<p>Date of birth: {{ Person.DoB }}</p>
 				<p>Weight: {{ Person.Weight }} kg</p>
 				<p>Height: {{ Person.Height }} cm</p>
@@ -17,35 +16,42 @@
 					<a href="{% url 'gym_profile' Gym.slug %}">Check out my gym</a>
 				{% endif %}
 						{% ifequal user.username  Person.user.username %}
-							<form action="{% url 'edit_profile' %}">
-							<input type="submit" value="Edit Profile" />
+							<form action="{% url 'edit_profile' user.username%}">
+								<input type="submit" value="Edit Profile" />
 							</form>
 							<a href="{% url 'add_progresspic' user.username %}">Add a Progress Pic</a>
+							<a href="{% url 'deactivate' %}">Deactivate Account</a>
 						{% endifequal %}
+			
+			<input type="submit" value="Follow" />
 		{% endif %}
 			</div>
 			
 			<div class="gym-map">
 					<img class="user-profilePic" src= "/media/{{ Person.ProfilePicture }}"></br>
-					<input type="submit" value="Follow" />
+					
 			</div>
 			
 			
 			<div class="gym-people">
 					{% if Pics %}
 						{% for Pic in Pics %}
-						<div class="pic-wrapper">
-							<div class="profilePic">
-								<img class="profilePic"src="/media/{{ Pic.Photo }}">
-								{{ Pic.Likes }}
-								{% if Comments %}
-									{% for Comment in Comments  %}
-										{% if Comment.OnPic == Pic %}
-											{{ Comment.Comment }}
-										{% endif %}
-									{% endfor %}
-								{% endif %}
-								<!--Add comment line goes here -->
+						<div class="wrapper">
+							<div class="photos">
+								<img class="progress-pic"src="/media/{{ Pic.Photo }}">
+								<div class="progress-pic">
+									{{ user.username }} 
+									</br></br>								
+									{% if Comments %}
+										{% for Comment in Comments  %}
+											{% if Comment.OnPic == Pic %}
+												{{ Comment.Poster }} <div class="comment">{{ Comment.Comment }} </div>
+											</br>
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+									<a href = "{% url 'add_comment' user.username Pic.PhotoID %}"> Add a Comment</a>
+								</div>
 							</div>
 						</div>
 						{% endfor %}

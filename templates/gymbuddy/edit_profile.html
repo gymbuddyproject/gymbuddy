@@ -7,13 +7,22 @@
 
 {% block body_block %}
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	<div class="boxed">
-	<div>
-		<strong>Edit Your Account</strong><br />
-			<form method="post" action="{% url 'edit_profile' user.username %}" enctype="multipart/form-data">
+
+	<img class="bg-image" src= "{% static "images/editprofile.jpg" %} "></a>
+	
+		<div class="signup-form">
+				<strong>Edit Your Account</strong><br />
+				<form method="post" action="{% url 'edit_profile' user.username %}"
+				enctype="multipart/form-data">
+
 				{% csrf_token %}
+
+		
 				{{ form.as_p }}
-				<input type="submit" value="Update" />
-			</form>
+
+				<input type="submit" name="submit" value="Make changes" />
+				</form>
+		
+		</div>
 	</div>	
 {% endblock %}
