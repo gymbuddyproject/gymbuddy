@@ -102,13 +102,28 @@ def gymprofile(request, gym_slug):
         context_dict["Profile"] = None
     return render(request, 'gymbuddy/gymprofile.html', context=context_dict)
 
+def listify(input_string):
+    input_string_= input_string.strip("[").strip("]")
+    input_string_ = input_string_.replace("'", "")
+    input_string_ = input_string_.replace(" ", "")
+    following_list = input_string_.split(",")
+    following_list = [i for i in following_list if i]
+    return following_list
+
 def userprofile(request, user_name):
     context_dict = {}
     try:
-        people = Profile.objects.get(user=(User.objects.get(username=user_name)))
-        context_dict["Person"] = people
-        followingpeople = people.Following
-        context_dict["Following"] = followingpeople
+        person = Profile.objects.get(user=(User.objects.get(username=user_name)))
+        logged_in_user = Profile.objects.get(user=(User.objects.get(username=request.user.username)))
+        context_dict["Person"] = person
+        logged_in_folowing = logged_in_user.Following
+        following_list = listify(logged_in_folowing)
+        if following_list:
+            context_dict["Logged_In_Following"] = following_list
+        person_following = person.Following
+        person_following_list = listify(person_following)
+        if person_following_list:
+            context_dict["User_Following"] = person_following_list
     except User.DoesNotExist:
         context_dict["Person"] = None
 
@@ -223,3 +238,33 @@ def home_gym(request, gym_slug, user):
     except User.DoesNotExist:
         context_dict["Profile"] = None
     return render(request, 'gymbuddy/gymprofile.html', context=context_dict)
+
+def follow_user(request, other_username, username):
+    context_dict = {}
+    try:
+        user = Profile.objects.get(user=User.objects.get(username=username))
+        context_dict["Person"] = user
+    except Profile.DoesNotExist:
+        pass
+    following_str = user.Following
+    following_list = listify(following_str)
+    following_list.append(other_username)
+    following_str = ','.join(following_list)
+    Profile.objects.filter(user=User.objects.get(username=user)).update(Following=following_str)
+    context_dict["User_Following"] = following_list
+    try:
+        pics = ProgressPics.objects.filter(UserName=(Profile.objects.get(user=(User.objects.get(username=username)))))
+        context_dict["Pics"] = pics
+    except ProgressPics.DoesNotExist:
+        context_dict["Pics"] = None
+    try:
+        user_comments = []
+        comments = Comments.objects.all()
+        for comment in comments:
+            if comment.OnPic in pics:
+                user_comments.append(comment)
+        context_dict["Comments"] = user_comments
+    except Comments.DoesNotExist:
+        context_dict["Comments"] = None
+    return render(request, 'gymbuddy/userprofile.html', context=context_dict)
+

@@ -8,7 +8,13 @@
 				<p>Date of birth: {{ Person.DoB }}</p>
 				<p>Weight: {{ Person.Weight }} kg</p>
 				<p>Height: {{ Person.Height }} cm</p>
-				<p>Following: {{ Person.Following }} </p>
+				{% if User_Following %}
+                    {% for user in User_Following %}
+                <a href="{% url 'user_profile' user %}">{{ user }}, </a>
+                    {% endfor %}
+                {% else %}
+                    <p>Not following any users</p>
+                {% endif %}
 				<p>About me: {{ Person.AboutMe }}</p>
 				
 				
@@ -23,7 +29,23 @@
 							<a href="{% url 'deactivate' %}">Deactivate Account</a>
 						{% endifequal %}
 			
-			<input type="submit" value="Follow" />
+			{% if user.is_authenticated %}
+					{% if user.username != Person.user.username %}
+						{% if Logged_In_Following %}
+							{% if Person.user.username not in Logged_In_Following %}
+								<form method="POST" action="{% url 'follow_user' Person.user.username user %}">
+									{% csrf_token %}
+									<input type="submit" value="Follow" />
+								</form>
+							{%endif%}
+						{% else %}
+							<form method="POST" action="{% url 'follow_user' Person.user.username user %}">
+								{% csrf_token %}
+								<input type="submit" value="Follow" />
+							</form>
+						{% endif %}
+					{% endif %}
+				{%endif%}
 		{% endif %}
 			</div>
 			

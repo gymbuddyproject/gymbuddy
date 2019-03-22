@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^gym/(?P<gym_slug>[\w\-]+)/$', views.gymprofile, name='gym_profile'),
     url(r'^gym/(?P<gym_slug>[\w\-]+)/(?P<user>[\w\-]+)/$', views.home_gym, name='home_gym'),
     url(r'^user/(?P<user_name>[\w\-]+)/$', views.userprofile, name='user_profile'),
+url(r'^user/(?P<other_username>[\w\-]+)/(?P<username>[\w\-]+)/$', views.follow_user, name='follow_user'),
     url(r'^contactus/', views.contactus, name='contactus'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^login/$', views.user_login, name='login'),
