@@ -27,7 +27,7 @@ SECRET_KEY = '1t$@+%&)z&4ulp*h30ky!qua%96^zu-8rvm2g!u+dn_hg@+1%8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gymbuddy.pythonanywhere.com']
 LOGIN_URL = '/gymbuddy/login/'
 
 # Application definition
