@@ -88,7 +88,11 @@ def gymprofile(request, gym_slug):
         context_dict["People"] = people
     except Gym.DoesNotExist:
         context_dict["Gym"] = None
-
+    try:
+        profile = Profile.objects.get(user=User.objects.get(username=request.user.username))
+        context_dict["Profile"] = profile
+    except User.DoesNotExist:
+        context_dict["Profile"] = None
     return render(request, 'gymbuddy/gymprofile.html', context=context_dict)
 
 def userprofile(request, user_name):
@@ -190,3 +194,21 @@ def add_progresspic(request, user_name):
 
 def test(request):
     return render(request, 'gymbuddy/tester.html')
+
+def home_gym(request, gym_slug, user):
+    context_dict = {}
+    try:
+        gym = Gym.objects.get(slug=gym_slug)
+        context_dict["Gym"] = gym
+        gym_id = gym.id
+        people = Profile.objects.filter(GymID=gym_id)
+        context_dict["People"] = people
+    except Gym.DoesNotExist:
+        context_dict["Gym"] = None
+    try:
+        Profile.objects.filter(user=User.objects.get(username=user)).update(GymID=gym)
+        profile = Profile.objects.get(user=User.objects.get(username=request.user.username))
+        context_dict["Profile"] = profile
+    except User.DoesNotExist:
+        context_dict["Profile"] = None
+    return render(request, 'gymbuddy/gymprofile.html', context=context_dict)

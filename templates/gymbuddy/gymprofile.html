@@ -12,12 +12,19 @@
 			<form action="{{ Gym.WebsiteURL}}">
                 <input type="submit" value="View Gym's webpage" />
             </form>
-			<input type="submit" name="submit" value="Follow" />
-		</div>	
-			
-			
+
+
+		{% if user.is_authenticated %}
+            {% if Profile.GymID.id is not Gym.id%}
+                <form method="POST" action="{% url 'home_gym' Gym.slug user %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Make Home Gym" />
+                </form>
+            {%endif%}
+        {%endif%}
+		</div>
 		<div class="gym-map">
-		
+		<img class = "map-image" src= "{% static "images/map.jpg" %} "></a>
 		<p>This is where the map will go</p>
 		</div>
 		
