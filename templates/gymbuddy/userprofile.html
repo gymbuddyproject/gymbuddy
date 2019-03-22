@@ -8,10 +8,13 @@
 				<p>Date of birth: {{ Person.DoB }}</p>
 				<p>Weight: {{ Person.Weight }} kg</p>
 				<p>Height: {{ Person.Height }} cm</p>
+				
 				{% if User_Following %}
+				<p>Following:
                     {% for user in User_Following %}
                 <a href="{% url 'user_profile' user %}">{{ user }}, </a>
                     {% endfor %}
+				</p>
                 {% else %}
                     <p>Not following any users</p>
                 {% endif %}
@@ -25,8 +28,8 @@
 							<form action="{% url 'edit_profile' user.username%}">
 								<input type="submit" value="Edit Profile" />
 							</form>
-							<a href="{% url 'add_progresspic' user.username %}">Add a Progress Pic</a>
-							<a href="{% url 'deactivate' %}">Deactivate Account</a>
+							<a href="{% url 'add_progresspic' user.username %}">Add a Progress Pic</a></br>
+							<a href="{% url 'deactivate' %}">Deactivate Account</a></br>
 						{% endifequal %}
 			
 			{% if user.is_authenticated %}
@@ -81,7 +84,9 @@
 				</div>
 			</div>
 	{% else %}
-		<p>You must sign in</p>
+		<div class="bg-text">
+			You must <a href="{% url 'login' %}">sign in</a> to view a profile
+		</div>
 	{% endif %}
 {% endblock %}
 

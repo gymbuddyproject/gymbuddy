@@ -34,7 +34,7 @@ def user_login(request):
                 return HttpResponse("Your GymBuddy account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            return render(request, 'gymbuddy/login.html', {})
     else:
         return render(request, 'gymbuddy/login.html', {})
 
@@ -124,6 +124,12 @@ def userprofile(request, user_name):
         person_following_list = listify(person_following)
         if person_following_list:
             context_dict["User_Following"] = person_following_list
+        try:
+            gym_name = person.GymID
+            gym_person = Gym.objects.get(GymName=gym_name)
+            context_dict["Gym"] = gym_person
+        except Gym.DoesNotExist:
+            pass
     except User.DoesNotExist:
         context_dict["Person"] = None
 

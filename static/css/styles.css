@@ -257,7 +257,7 @@ display: none;
 
 .gym-people{
 	
-	background-color: white; /* Black w/opacity/see-through */
+	background-color: white;
 	color: black;
 	font-weight: bold;
 	font-family: 'IBM Plex Sans', sans-serif;
@@ -282,7 +282,7 @@ display: none;
 }
 
 .person {
-	background-color: rgba(0,0,0, 0.8);
+	background-color: white;
 	width: 14em;
 	border: 0.25em solid #43ABC9;
 	border-radius:1.5em;

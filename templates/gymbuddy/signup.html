@@ -10,9 +10,9 @@
 	<img class="bg-image" src= "{% static "images/signup.jpg" %} "></a>
 	{% if registered %}
 		<div class="bg-text">
-		<strong>Thank you for signing up to GymBuddy!</strong>
-		<a href="{% url 'login' %}">Please login with your newly created credentials</a><br/>
-		<a href="{% url 'index' %}">Or return to the homepage</a><br/>
+			<strong>Thank you for signing up to GymBuddy!</strong>
+			<a href="{% url 'login' %}">Please login with your newly created credentials</a><br/>
+			<a href="{% url 'index' %}">Or return to the homepage</a><br/>
 		</div>
 	{% else %}
 		<div class="signup-form">

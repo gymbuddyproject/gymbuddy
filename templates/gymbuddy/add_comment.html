@@ -9,6 +9,8 @@
 	<h1>Add a Progress Picture</h1>
 	<div>
 		{% if user.is_authenticated %}
+		<div class="bg-text">
+			<h3>Write your thoughts! </h3>
 			<form id="comment_form" method="post" action="" enctype="multipart/form-data">
 				{% csrf_token %}
 				{% for hidden in form.hidden_fields %}
@@ -23,6 +25,7 @@
 		{% else %}
 			<strong>A User by this name does not exist.</strong>	
 			</form>
+		</div>
 		{% endif %}
 	</div>
 {% endblock %}
