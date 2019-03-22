@@ -146,27 +146,28 @@ def edit_profile(request):
                   {'Profile':profile,
                    'edit_form': edit_form})
 
-def add_comment(request, user_name, onphoto):
+def add_comment(request, user_name, pic_id):
     try:
-        poster = Profile.objects.get(user=User.objects.get(username=user_name))
-        image = onphoto
+        profile = Profile.objects.get(user=User.objects.get(username=user_name))        
+        image = ProgressPics.objects.get(PhotoID = pic_id)
     except Profile.DoesNotExist or ProgressPics.DoesNotExist:
-        poster = None
+        profile = None
         image = None
     form = CommentForm()
 
     if request.method == 'POST':
         form = CommentForm(data=request.POST)
-        
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.Poster = poster
-            comment.OnPic = image
-            comment.save(commit=True)
-            return userprofile(request, user_name)
+            if profile and image:
+                comment = form.save(commit=False)
+                comment.Poster = profile
+                comment.OnPic = image
+                comment.save()
+                return userprofile(request, User.objects.get(username = ProgressPics.objects.get(PhotoID = pic_id).UserName))
         else:
             print(form.errors)
-    return render(request, 'gymbuddy/add_comment.html', {'form': form})
+    context_dict = {'form':form, 'user_name': user_name, 'pic_id': pic_id}
+    return render(request, 'gymbuddy/add_comment.html', context_dict)
 
 def add_progresspic(request, user_name):
     try:

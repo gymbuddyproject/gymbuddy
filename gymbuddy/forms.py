@@ -71,14 +71,13 @@ class EditForm(forms.ModelForm):
         fields = ('ProfilePicture', 'AboutMe', 'Height', 'Weight', 'Experience')
 
 class CommentForm(forms.ModelForm):
-    Comment = forms.CharField(widget=forms.Textarea, max_length=200, required=False, initial=Profile.AboutMe)
+    Comment = forms.CharField(widget=forms.Textarea, max_length=200, required=False)
     class Meta:
         model = Comments
         fields = ['Comment']
 
 class PictureForm(forms.ModelForm):
     Photo = forms.ImageField(required=False)
-
     class Meta:
         model = ProgressPics
         fields = ['Photo']
